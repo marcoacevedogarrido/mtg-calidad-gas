@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="tramo">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Tramos</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Tramos-Form">
+                    <h4>Tramos en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                <a href="{{ url_for('tramo_create') }}">
+                                                    <button type="button" class="btn btn-success">Agregar Tramo <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for tramo in tramos %}
+                                            <div class="form-group row">
+                                                <div class="col-sm-8">
+                                                    <div>Tramos : {{ tramo.name }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('tramo_edit', tramo=tramo.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

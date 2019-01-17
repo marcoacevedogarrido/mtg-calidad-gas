@@ -1,0 +1,43 @@
+{
+    "normal": {
+        "validador_superior": {
+            "poder_calorifico_superior": 42635,
+            "indice_wobbe": 47235,
+            "gases_inertes_pmol": 4,
+            "punto_rocio_hydrocarburos": -4,
+            "dioxido_de_carbono": 2,
+            "oxigeno_pvv": 0.2,
+            "suluro_hidrogeno": 5.7,
+            "azufre_antes_odorizar": 35,
+            "azufre_despues_odorizar": 35,
+            "agua": 65
+        },
+        "validador_inferior": {
+            "poder_calorifico_superior": 36995,
+            "indice_wobbe": 47235
+        }
+    },
+    "biometano": {
+        "validador_superior": {
+            "etano": 6,
+            "propano_e_hidrocarburos_superiores": 3,
+            "hexano_hydrocarburos": 0.2,
+            "hidrogeno": 0.1,
+            "monoxido_carbono": 0.1,
+            "oxigeno_pvv": 1,
+            "gases_inertes_pmol": 4.5,
+            "azufre_antes_odorizar": 35,
+            "azufre_despues_odorizar": 35,
+            "poder_calorifico_superior": 41170,
+            "indice_wobbe": 52720,
+            "punto_rocio_hydrocarburos": 5500
+        },
+        "validador_inferior": {
+            "poder_calorifico_superior": 36300,
+            "indice_wobbe": 47280,
+            "punto_rocio_hydrocarburos": -4,
+            "metano": 88,
+            "gases_inertes_pmol": 1.5
+        }
+    }
+}

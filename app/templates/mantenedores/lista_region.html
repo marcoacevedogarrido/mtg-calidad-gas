@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="region">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Regiones</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Region-Form">
+                    <h4>Regiones en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                <a href="{{ url_for('region_create') }}">
+                                                    <button type="button" class="btn btn-success">Agregar Region <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for region in regiones %}
+                                            <div class="form-group row">
+                                                <div class="col-sm-8">
+                                                    <div>Region : {{ region.name }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('region_edit', region=region.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

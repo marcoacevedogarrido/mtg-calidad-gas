@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="usuario">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Usuarios</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Usuario-Form">
+                    <h4>Usuarios en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('usuario_create', usuario_id=usuario.id) }}">
+                                                        <button type="button" class="btn btn-success">Agregar Usuario <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for usuario in usuario %}
+                                            <div class="form-group row">
+                                                <div class="col-sm-8">
+                                                    <div>Nombre de Usuario: {{ usuario.username }}</div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div>Email de Usuario: {{ usuario.email }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('usuario_edit', usuario_id=usuario.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

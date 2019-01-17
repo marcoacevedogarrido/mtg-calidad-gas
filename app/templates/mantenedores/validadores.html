@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="validadores">
+    <main class="container">
+        <div class="header">
+            <h2>Tramos</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Tramos-Form">
+                    <h4>Validador gas - limite superior</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                    {% for elem in form %}
+                                        {% if elem.id != 'csrf_token' and elem.id != 'submit' %}
+                                        <div class="form-group row">
+                                            <label for="inputText" class="col-sm-3 col-form-label">{{ elem.label }}</label>
+                                            <div class="col-sm-8">
+                                                {{ elem(size=32, class_="form-control") }}
+                                                {% for error in elem.errors %}
+                                                    <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ form.hidden_tag() }}
+                                </div>
+                            </div>
+                            <button href={{ form.submit(class_="btn btn-primary", id="button_submit")}}  Actualizar Valores <i class="fas fa-edit"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

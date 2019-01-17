@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="tipored">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Tipos de Red</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="TiposRed-Form">
+                    <h4>Tipos de Red en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('tipored_create') }}">
+                                                        <button type="button" class="btn btn-success">Agregar Tipos de Red <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for tipored in tiposred %}
+                                            <div class="form-group row">
+                                                <div class="col-sm-8">
+                                                    <div>Nombre Tipo de Red: {{ tipored.name }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('tipored_edit', tipored_id=tipored.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

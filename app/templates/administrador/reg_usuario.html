@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block body %}
+    <main class="container">
+        <div class="header">
+            <h2>Registro de Usuarios</h2>
+        </div>
+
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Registration-Form">
+                    <h4>Ingrese los Datos De Usuario</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.username.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.username(size=32, class_="form-control") }}
+                                            {% for error in form.username.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.password.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.password(size=32, class_="form-control") }}
+                                            {% for error in form.password.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.password2.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.password2(size=32, class_="form-control") }}
+                                            {% for error in form.password2.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.email.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.email(class_='custom-select', id='Email', size=25)}}
+                                            {% for error in form.email.errors %}
+                                                <span class="alert alert-danger" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="rol" class="col-sm-3 col-form-label">{{ form.rol.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.rol(class_="custom-select")}}
+                                        </div>
+                                    </div>
+                                    {{ form.hidden_tag() }}
+                                    <button href={{ form.submit(class_="btn btn-success" ) }} Agregar Usuario <i class="fas fa-plus-square"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+

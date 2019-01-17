@@ -1,0 +1,163 @@
+/*STYLES*/
+
+body {
+    background-color: #F2F2F2;
+}
+
+.index {
+    background-color: #F2F2F2;
+}
+
+main {
+    margin-top:20px;
+    padding:10px;
+}
+
+.main-content {
+    margin-top:50px;
+}
+
+.report {
+    margin-top:50px;
+}
+
+.login {
+  background: url(../login-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-info {
+    margin-top: 20%;
+}
+
+.login-form {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 1px 0 4px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    width: 600px;
+    height: 420px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 5px;
+}
+
+login-form .btn {
+    margin-top:50px;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.secform {
+    margin-top:5%;
+    margin-bottom:7%;
+}
+
+
+/*FORMULARIOS STYLES*/
+
+
+.btn-light {
+    margin-left:50%;
+}
+
+.btn-primary {
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+.btn-danger {
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+.btn-success {
+    margin-top:3%;
+}
+
+.pcontrol .btn-success {
+    margin-left:90%;
+}
+
+.laboratorista .btn-success {
+    margin-left:90%;
+}
+
+.tipored .btn-success {
+    margin-left:90%;
+}
+
+.rcontrol .btn-success {
+    margin-left:90%;
+}
+
+.tramo .btn-success {
+    margin-left:90%;
+}
+
+.region .btn-success {
+    margin-left:90%;
+}
+
+.usuario .btn-success {
+    margin-left:90%;
+}
+
+.index .btn-success {
+    margin-top:5%;
+    margin-bottom:3%;
+}
+
+.index .btn-danger {
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+.index .btn-secundary {
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+h2 {
+    margin-top:5%;
+}
+
+.login h2 {
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+h4 {
+   margin-top:1%;
+   margin-bottom:5%;
+}
+
+.col h4 {
+   margin-top:10%;
+   margin-bottom:7%;
+}
+
+h6 {
+    margin-top:5%;
+}
+
+.elementoschart {
+    height:150%;
+    width:100%;
+    margin-top:7%;
+}
+
+.indiceschart {
+    height:150%;
+    width:100%;
+    margin-top:7%;
+}
+
+.label {
+    margin-top:3%;
+}

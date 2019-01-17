@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="formulario>">
+    <main>
+        <div class="container">
+            <div class="header">
+                <h2>{{ title }}</h2>
+            </div>
+            <form action="/" id="main-form">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                   <div class="col">
+                        <h4>Identificacion General</h4>
+                        <div class="form-group row">
+                            <label for="id-metrogas" class="col-sm-4 col-form-label">ID</label>
+                            <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="id-metrogas" value="121">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tipo-red" class="col-sm-4 col-form-label">Tipo Red</label>
+                            <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="tipo-red" value="PSRI">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="region" class="col-sm-4 col-form-label">Region</label>
+                            <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="region" value="Metropolitana de Santiago">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tramo" class="col-sm-4 col-form-label">Tramo</label>
+                            <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="tramo" value="No Aplica">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tipo-combustible" class="col-sm-4 col-form-label">{{ form.tipo_combustible.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.tipo_combustible(class_="custom-select",id='tipo-combustible')}}
+                            </div>
+                        </div>
+                   </div>
+                    <div class="col">
+                        <h4>Identificacion Control</h4>
+                        <br>
+                        <div class="form-group row">
+                            <label for="tipo-combustible" class="col-sm-4 col-form-label">{{ form.punto_control.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.punto_control(class_="custom-select", id='punto-control')}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="clasificacion_control" class="col-sm-4 col-form-label">{{ form.clasificacion_control.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.clasificacion_control(class_="custom-select",id='clasificacion_control')}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="responsable_control" class="col-sm-4 col-form-label">{{ form.responsable_control.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.responsable_control(class_="custom-select",id='responsable_control')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4>Identificacion Muestra</h4>
+                        <br>
+                        <div class="form-group row">
+                            <label for="laboratorista" class="col-sm-4 col-form-label">{{ form.laboratorista.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.laboratorista(class_="custom-select",id='laboratorista')}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fecha_muestra" class="col-sm-4 col-form-label">{{ form.fecha_muestra.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.fecha_muestra(id='fecha_muestra', class_="datepicker")}}
+                                {% for error in form.fecha_muestra.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h4>Resultados Odorizacion - Impurezas</h4>
+                        <br>
+                        <div class="form-group row">
+                            <label for="resultado_odorizacion" class="col-sm-4 form-check-label">{{ form.resultado_odorizacion.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.resultado_odorizacion(class_="form-check-input",id='resultado_odorizacion')}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="resultado_impurezas" class="col-sm-4 form-check-label">{{ form.resultado_impurezas.label }}</label>
+                            <div class="col-sm-8">
+                                {{ form.resultado_impurezas(class_="form-check-input",id='resultado_impurezas')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>Resultados Analisis</h4>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="poder_calorifico_superior" class="col-sm-4 col-form-label">{{ form.poder_calorifico_superior.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.poder_calorifico_superior(class_="custom-select",id='poder_calorifico_superior')}}
+                                {% for error in form.poder_calorifico_superior.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                Kcal/m<sup>3</sup>
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="poder_calorifico_inferior" class="col-sm-4 col-form-label">{{ form.poder_calorifico_inferior.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.poder_calorifico_inferior(class_="custom-select",id='poder_calorifico_inferior')}}
+                                {% for error in form.poder_calorifico_inferior.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                Kcal/m<sup>3</sup>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="indice_wobbe" class="col-sm-4 col-form-label">{{ form.indice_wobbe.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.indice_wobbe(class_="custom-select",id='indice_wobbe')}}
+                                {% for error in form.indice_wobbe.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                Kcal/m<sup>3</sup>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="densidad_relativa" class="col-sm-4 col-form-label">{{ form.densidad_relativa.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.densidad_relativa(class_="custom-select",id='densidad_relativa')}}
+                                {% for error in form.densidad_relativa.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                -
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="punto_rocio_hydrocarburos" class="col-sm-4 col-form-label">{{ form.punto_rocio_hydrocarburos.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.punto_rocio_hydrocarburos(class_="custom-select",id='punto_rocio_hydrocarburos')}}
+                                {% for error in form.punto_rocio_hydrocarburos.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                °C
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="dioxido_de_carobono_pmol" class="col-sm-4 col-form-label">{{ form.dioxido_de_carobono_pmol.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.dioxido_de_carobono_pmol(class_="custom-select",id='dioxido_de_carobono_pmol')}}
+                                {% for error in form.dioxido_de_carobono_pmol.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="oxigeno_pvv" class="col-sm-4 col-form-label">{{ form.oxigeno_pvv.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.oxigeno_pvv(class_="custom-select",id='oxigeno_pvv')}}
+                                {% for error in form.oxigeno_pvv.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % (v/v)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="suluro_hidrogeno" class="col-sm-4 col-form-label">{{ form.suluro_hidrogeno.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.suluro_hidrogeno(class_="custom-select",id='suluro_hidrogeno')}}
+                                {% for error in form.suluro_hidrogeno.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                mg/m<sup>3</sup>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="azufre_antes_odorizar" class="col-sm-4 col-form-label">{{ form.azufre_antes_odorizar.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.azufre_antes_odorizar(class_="custom-select",id='azufre_antes_odorizar')}}
+                                {% for error in form.azufre_antes_odorizar.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                mg/m<sup>3</sup>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="azufre_despues_odorizar" class="col-sm-4 col-form-label">{{ form.azufre_despues_odorizar.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.azufre_despues_odorizar(class_="custom-select",id='azufre_despues_odorizar')}}
+                                {% for error in form.azufre_despues_odorizar.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                mg/m<sup>3</sup>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="agua" class="col-sm-4 col-form-label">{{ form.agua.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.agua(class_="custom-select",id='agua')}}
+                                {% for error in form.agua.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                mg/m<sup>3</sup>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="metano" class="col-sm-4 col-form-label">{{ form.metano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.metano(class_="custom-select",id='metano')}}
+                                {% for error in form.metano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="etano" class="col-sm-4 col-form-label">{{ form.etano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.etano(class_="custom-select",id='etano')}}
+                                {% for error in form.etano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="propano" class="col-sm-4 col-form-label">{{ form.propano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.propano(class_="custom-select",id='propano')}}
+                                {% for error in form.propano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="butano" class="col-sm-4 col-form-label">{{ form.butano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.butano(class_="custom-select",id='butano')}}
+                                {% for error in form.butano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pentano" class="col-sm-4 col-form-label">{{ form.pentano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.pentano(class_="custom-select",id='pentano')}}
+                                {% for error in form.pentano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="hexano" class="col-sm-4 col-form-label">{{ form.hexano.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.hexano(class_="custom-select",id='hexano')}}
+                                {% for error in form.hexano.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nitrogeno" class="col-sm-4 col-form-label">{{ form.nitrogeno.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.nitrogeno(class_="custom-select",id='nitrogeno')}}
+                                {% for error in form.nitrogeno.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="porcentaje_vol_gas" class="col-sm-4 col-form-label">{{ form.porcentaje_vol_gas.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.porcentaje_vol_gas(class_="custom-select",id='porcentaje_vol_gas')}}
+                                {% for error in form.porcentaje_vol_gas.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                %
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="gases_inertes_pmol" class="col-sm-4 col-form-label">{{ form.gases_inertes_pmol.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.gases_inertes_pmol(class_="custom-select",id='gases_inertes_pmol')}}
+                                {% for error in form.gases_inertes_pmol.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % (v/v)
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="dioxido_de_carbono" class="col-sm-4 col-form-label">{{ form.dioxido_de_carbono.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.dioxido_de_carbono(class_="custom-select",id='dioxido_de_carbono')}}
+                                {% for error in form.dioxido_de_carbono.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % (v/v)
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="oxigeno_pmol" class="col-sm-4 col-form-label">{{ form.oxigeno_pmol.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.oxigeno_pmol(class_="custom-select",id='oxigeno_pmol')}}
+                                {% for error in form.oxigeno_pmol.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % (v/v)
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="propano_e_hidrocarburos_superiores" class="col-sm-4 col-form-label">{{ form.propano_e_hidrocarburos_superiores.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.propano_e_hidrocarburos_superiores(class_="custom-select",id='propano_e_hidrocarburos_superiores')}}
+                                {% for error in form.propano_e_hidrocarburos_superiores.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="hexano_hydrocarburos" class="col-sm-4 col-form-label">{{ form.hexano_hydrocarburos.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.hexano_hydrocarburos(class_="custom-select",id='hexano_hydrocarburos')}}
+                                {% for error in form.hexano_hydrocarburos.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="hidrogeno" class="col-sm-4 col-form-label">{{ form.hidrogeno.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.hidrogeno(class_="custom-select",id='hidrogeno')}}
+                                {% for error in form.hidrogeno.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                        <div class="form-group row hidden-field">
+                            <label for="monoxido_carbono" class="col-sm-4 col-form-label">{{ form.monoxido_carbono.label }}</label>
+                            <div class="col-sm-6">
+                                {{ form.monoxido_carbono(class_="custom-select",id='monoxido_carbono')}}
+                                {% for error in form.monoxido_carbono.errors %}
+                                    <div class="alert alert-danger" role="alert">[{{ error }}]</div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-2">
+                                % mol
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button href={{ form.submit(class_="btn btn-success", id="button_submit" ) }} Generar Reporte <i class="fas fa-plus-square"></i></button>
+            </form>
+            <br>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Los siguientes campos tienen valores fuera de norma:
+                    <ul class="modal-list">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="force-save">Guardar de todas formas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#fecha_muestra').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+</body>
+{% endblock %}

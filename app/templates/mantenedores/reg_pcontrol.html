@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block body %}
+    <main class="container">
+        <div class="header">
+            <h2>Registro de Puntos de Control</h2>
+        </div>
+
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Pcontrol-Form">
+                    <h4>Ingrese los Datos De Puntos de Control</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.name.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.name(size=32, class_="form-control") }}
+                                            {% for error in form.name.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.region_id.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.region_id(class_='custom-select', id='punto-control')}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="tipo-combustible" class="col-sm-3 col-form-label">{{ form.tipo_de_red_id.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.tipo_de_red_id(class_="custom-select", id='punto-control')}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.tramo_id.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.tramo_id(class_='custom-select', id='punto-control')}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.descripcion.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.descripcion(size=32, class_="form-control") }}
+                                            {% for error in form.descripcion.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {{ form.hidden_tag() }}
+                                        <button href={{ form.submit(class_="btn btn-success" ) }} Agregar Punto de Control <i class="fas fa-plus-square"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+

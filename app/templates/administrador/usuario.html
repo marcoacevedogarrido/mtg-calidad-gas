@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block body %}
+    <main class="container">
+        <div class="header">
+            <h2>Edicion de Usuarios</h2>
+        </div>
+
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Usuario-Form">
+                    <h4>Ingrese los Datos De Usuarios</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.username.label }}</label>
+                                        <div class="col-sm-4">
+                                            {{ form.username(size=32, class_="form-control", id='Usuario') }}
+                                            {% for error in form.username.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputText" class="col-sm-3 col-form-label">{{ form.email.label }}</label>
+                                        <div class="col-sm-4">
+                                            {{ form.email(class_="form-control", id='Email', size=40)}}
+                                            {% for error in form.email.errors %}
+                                                <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                         <label for="inputPassword3" class="col-sm-3 col-form-label">{{ form.password.label }}</label>
+                                         <div class="col-sm-4">
+                                             {{ form.password(class_="form-control", id='Password', size=40)}}
+                                             {% for error in form.password.errors %}
+                                                 <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                             {% endfor %}
+                                         </div>
+                                    </div>
+                                    <div class="form-group row">
+                                         <label for="inputPassword3" class="col-sm-3 col-form-label">{{ form.password2.label }}</label>
+                                         <div class="col-sm-4">
+                                             {{ form.password2(class_="form-control", id='Password', size=40)}}
+                                             {% for error in form.password2.errors %}
+                                                 <span class="alert alert-danger col-sm-8" role="alert">[{{ error }}]</span>
+                                             {% endfor %}
+                                         </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="rol" class="col-sm-3 col-form-label">{{ form.rol.label }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form.rol(class_="custom-select")}}
+                                        </div>
+                                    </div>
+                                    {{ form.hidden_tag() }}
+                                        <button href={{ form.submit(class_="btn btn-primary" ) }} Editar Usuarios <i class="fas fa-edit"></i></button>
+                                    {% if edited_usuario %}
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                            Eliminar <span><i class="fa fa-times"></i></span>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Esta seguro que desea eliminar al Usuario?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+                    <a href="{{ url_for('usuario_delete', usuario_id=edited_usuario.id) }}">
+                        <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

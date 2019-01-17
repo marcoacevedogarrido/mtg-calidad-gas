@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{{ url_for('static', filename='vendor/js/jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='vendor/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="login">
+<main class="container">
+    <div class="form-group">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alerts">
+                {% for message in messages %}
+                    <div class="row justify-content-center">
+                        <div class="column-sm-6 alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <section class="login-info row align-items-center justify-content-between">
+        <div class="col">
+            <div class="login-form">
+                <h2>Formulario calidad</h2>
+                <div class="form-group-row">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            {{ form.username.label }}
+                            {{ form.username(class_="form-control", size=32) }}
+                            {% for error in form.username.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label }}
+                            {{ form.password(size=32, class_="form-control") }}
+                            {% for error in form.password.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.remember_me.label(class_="form-check-label") }}
+                            {{ form.remember_me(class_="form-check-input", class="col-sm-1") }}
+                        </div>
+                        <div class="form-group">
+                            Olvidó su Password? <a href="{{ url_for('reset_password_request') }}">Reset</a>
+                        </div>
+                        <div class="form-group">
+                            {{ form.hidden_tag() }}
+                            {{ form.submit(class_="btn btn-primary btn-sm") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
+
+
+

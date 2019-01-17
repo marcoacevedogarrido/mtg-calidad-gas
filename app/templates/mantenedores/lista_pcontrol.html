@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="pcontrol">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Puntos de Control</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Pcontrol-Form">
+                    <h4>Puntos de Control en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                <a href="{{ url_for('pcontrol_create') }}">
+                                                    <button type="button" class="btn btn-success">Agregar Punto de Control <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for puntocontrol in puntoscontrol %}
+                                            <div class="form-group row">
+                                                <h6 class="col-sm-8">
+                                                    <div>{{ puntocontrol.name }}</div>
+                                                </h6>
+                                                <div class="col-sm-8">
+                                                    <div>{{ puntocontrol.descripcion }}</div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div>Region : {{ puntocontrol.region.name }}</div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div>Tipo de Red : {{ puntocontrol.tipo_red.name }}</div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div>Tramo : {{ puntocontrol.tramo.name }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('pcontrol_edit', pcontrol_id=puntocontrol.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+

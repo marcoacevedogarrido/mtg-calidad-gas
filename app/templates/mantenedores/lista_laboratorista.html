@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="laboratorista">
+    <main class="container">
+        <div class="header">
+            <h2>Edición de Laboratoristas</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <div class="Laboratorista-Form">
+                    <h4>Laboratoristas en el Sistema</h4>
+                    <div class="container">
+                        <form action="" method="post">
+                            <div class="row justify-content-star">
+                                <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('laboratorista_create', laboratorista_id=laboratorista.id) }}">
+                                                        <button type="button" class="btn btn-success">Agregar Laboratorista <span><i class="fas fa-address-card" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% for laboratorista in laboratorista %}
+                                            <div class="form-group row">
+                                                <div class="col-sm-8">
+                                                    <div>Nombre Laboratorista: {{ laboratorista.name }}</div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div>Email Laboratorista: {{ laboratorista.email }}</div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a href="{{ url_for('laboratorista_edit', laboratorista_id=laboratorista.id) }}">
+                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}
+
+
